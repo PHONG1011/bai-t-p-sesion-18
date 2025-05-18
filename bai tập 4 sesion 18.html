@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bàn phím ảo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+    }
+
+    .keyboard-container {
+      background: #e0e0e0;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 50px;
+      font-size: 18px;
+      padding: 10px;
+      margin-bottom: 20px;
+      resize: none;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .keyboard {
+      display: grid;
+      grid-template-columns: repeat(10, 40px);
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .key {
+      background: #2196f3;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      user-select: none;
+      font-weight: bold;
+    }
+
+    .key:hover {
+      background: #1976d2;
+    }
+
+    .key.delete {
+      background: #f44336;
+    }
+  </style>
+</head>
+<body>
+  <div class="keyboard-container">
+    <textarea id="output" placeholder="Nhập ở đây..."></textarea>
+    <div id="keyboard" class="keyboard"></div>
+  </div>
+
+  <script>
+    const keyboard = document.getElementById("keyboard");
+    const output = document.getElementById("output");
+
+    // Tạo các phím A-Z
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+    alphabet.forEach(char => {
+      const btn = document.createElement("div");
+      btn.classList.add("key");
+      btn.textContent = char;
+      btn.addEventListener("click", () => {
+        output.value += char;
+      });
+      keyboard.appendChild(btn);
+    });
+
+    // Thêm nút Xóa
+    const deleteBtn = document.createElement("div");
+    deleteBtn.classList.add("key", "delete");
+    deleteBtn.textContent = "Xóa";
+    deleteBtn.addEventListener("click", () => {
+      output.value = output.value.slice(0, -1);
+    });
+    keyboard.appendChild(deleteBtn);
+  </script>
+</body>
+</html>
