@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Luyện tập đối tượng JS</title>
+</head>
+<body>
+  <script>
+    let courses = [
+      { name: "HTML", complete: false },
+      { name: "CSS", complete: false },
+      { name: "Basic of javascript", complete: false },
+      { name: "Node package Manager (npm)", complete: false },
+      { name: "Git", complete: false }
+    ];
+
+    function printCourses() {
+      courses.forEach((course, index) => {
+        // Sửa lỗi cú pháp template string
+        console.log(`${index + 1}. ${course.name}`);
+        console.log(`Complete: ${course.complete}`);
+      });
+    }
+
+    function createCourse(name) {
+      courses.push({ name, complete: false });
+      printCourses();
+    }
+
+    function updateCourse(index, newStatus) {
+      if (courses[index]) {
+        courses[index].complete = newStatus;
+        printCourses();
+      }
+    }
+
+    function deleteCourse(index) {
+      if (courses[index]) {
+        courses.splice(index, 1);
+        printCourses();
+      }
+    }
+
+    function runProgram() {
+      let running = true;
+      while (running) {
+        let choice = prompt("Nhập C/R/U/D/E để thao tác:");
+        switch (choice && choice.toUpperCase()) {
+          case "C":
+            let newName = prompt("Nhập tên khóa học mới:");
+            createCourse(newName);
+            break;
+          case "R":
+            printCourses();
+            break;
+          case "U":
+            let updateIndex = +prompt("Nhập vị trí muốn update:") - 1;
+            let status = prompt("Hoàn thành chưa? (true/false):") === "true";
+            updateCourse(updateIndex, status);
+            break;
+          case "D":
+            let deleteIndex = +prompt("Nhập vị trí muốn xóa:") - 1;
+            deleteCourse(deleteIndex);
+            break;
+          case "E":
+            alert("Cảm ơn bạn đã đến với Rikkei Academy");
+            running = false;
+            break;
+          default:
+            alert("Lựa chọn không hợp lệ!");
+        }
+      }
+    }
+
+    runProgram();
+  </script>
+</body>
+</html>
