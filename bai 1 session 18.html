@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Luyện tập đối tượng JS</title>
+</head>
+<body>
+  <script>
+    // Bài 1: Tạo đối tượng người và truy xuất thuộc tính
+    let person = {
+      name: "Nguyễn Văn A",
+      age: 25,
+      address: "Hà Nội",
+      phone: "0123456789"
+    };
+    console.log("Bài 1:");
+    console.log("Tên:", person.name);
+    console.log("Tuổi:", person.age);
+    console.log("Địa chỉ:", person.address);
+    console.log("Số điện thoại:", person.phone);
+
+    // Bài 2: Tạo đối tượng student có cặp key và value tương ứng như dưới đây, sau đó khởi tạo đối tượng
+    //  newStudent có các thuộc tính tương tự (value tự điền). Sau đó tạo mảng “students” để chứa chúng.
+    //  Cuối cùng truy xuất các thuộc tính của đối tượng “newStudent” sau khi thêm vào mảng “students”
+    let student = {
+      id: 1,
+      name: "NGuyen Van A",
+      gender: nam,
+      age: 20,
+      mark: 8,
+ 
+    };
+
+    let newStudent = {
+      id: 2,
+      name: "LE VAN C",
+      gender: nữ,
+      age: 19,
+      mark: 9,
+    };
+
+    let students = [];
+    students.push(newStudent);
+
+    console.log("\nid:");
+    console.log("Tên:", newStudent.name);
+    console.log("giới tính:", newStudent.age);
+    console.log("tuổi:", newStudent.address);
+    console.log("Điểm:", newStudent.score);
+
+    // Bài 3: Tìm học sinh có điểm cao nhất và in ra toàn bộ thông tin
+    // Thêm một số học sinh khác để minh họa
+    students.push({
+      name: "Lê Văn C",
+      age: 21,
+      address: "Đà Nẵng",
+      phone: "0911222333",
+      score: 8.7
+    });
+    students.push({
+      name: "Phạm Thị D",
+      age: 19,
+      address: "TP.HCM",
+      phone: "0909888777",
+      score: 9.8
+    });
+
+    // Tìm học sinh có điểm cao nhất
+    let maxScoreStudent = students[0];
+    for (let i = 1; i < students.length; i++) {
+      if (students[i].score > maxScoreStudent.score) {
+        maxScoreStudent = students[i];
+      }
+    }
+
+    console.log("\nBài 3:");
+    console.log("Học sinh có điểm cao nhất:");
+    for (let key in maxScoreStudent) {
+      console.log(`${key}: ${maxScoreStudent[key]}`);
+    }
+  </script>
+</body>
+</html>
